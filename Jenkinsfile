@@ -28,12 +28,8 @@ pipeline {
 	stage('Release Jar to Jfrog') {
       steps {
 	    echo "~~~~~~~Cutting a release in git as well as in Jfrog~~~~~~~~~"
-	    ws("C:\\Users\\Administrator\\Desktop\\temp\\") {
-		    bat 'git clone https://github.com/SujalAnand/DevOps-MuleSoft.git'
-  	            	    ws("C:\\Users\\Administrator\\Desktop\\temp\\DevOps-MuleSoft\\") {
-		   		bat 'mvn release:clean release:prepare release:perform -DskipStaging=true -DreleaseVersion=%releaseVersion% -DdevelopmentVersion=%developmentVersion%-SNAPSHOT -Dtag=%releaseVersion%'
-  	            
-}
+	    ws("C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\MuleSoft_DevOps\\") {
+	bat 'mvn release:clean release:prepare release:perform -DskipStaging=true -DreleaseVersion=%releaseVersion% -DdevelopmentVersion=%developmentVersion%-SNAPSHOT -Dtag=%releaseVersion%'
 }
       }
     }
