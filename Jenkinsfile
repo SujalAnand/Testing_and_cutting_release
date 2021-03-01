@@ -29,7 +29,9 @@ pipeline {
       steps {
 	    echo "~~~~~~~Cutting a release in git as well as in Jfrog~~~~~~~~~"
 	    ws("C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\MuleSoft_DevOps\\") {
-  		bat 'mvn release:clean release:prepare release:perform -DskipStaging=true -DreleaseVersion=%releaseVersion% -DdevelopmentVersion=%developmentVersion%-SNAPSHOT -Dtag=%releaseVersion%'
+		    bat 'git config --global user.email "sujal.anand056@gmail.com"'
+		    bat 'git config --global user.name "Sujal Anand"'
+  	            bat 'mvn release:clean release:prepare release:perform -DskipStaging=true -DreleaseVersion=%releaseVersion% -DdevelopmentVersion=%developmentVersion%-SNAPSHOT -Dtag=%releaseVersion%'
 }
       }
     }
