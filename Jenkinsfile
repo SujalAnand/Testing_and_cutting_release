@@ -28,7 +28,9 @@ pipeline {
 	stage('Release Jar to Jfrog') {
       steps {
 	    echo "~~~~~~~Cutting a release in git as well as in Jfrog~~~~~~~~~"
-	    bat 'mvn release:clean release:prepare release:perform -DskipStaging=true -DreleaseVersion=%releaseVersion% -DdevelopmentVersion=%developmentVersion%-SNAPSHOT -Dtag=%releaseVersion%'
+	    ws("C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\MuleSoft_DevOps") {
+  		bat 'mvn release:clean release:prepare release:perform -DskipStaging=true -DreleaseVersion=%releaseVersion% -DdevelopmentVersion=%developmentVersion%-SNAPSHOT -Dtag=%releaseVersion%'
+}
       }
     }
 
